@@ -46,7 +46,7 @@ function SideVideo() {
   return (
     <div className="md:w-[350px] w-full h-[800px] flex flex-wrap justify-center   ">
       {Data?.map((item, keys) => (
-        <button key={keys} className="   " onClick={()=>place(item)}>
+        <button key={keys} className=" md:m-2 m-0  " onClick={()=>place(item)}>
           <Link to={`/room/${item._id}/${item?.postBy}`}>
             <button><img
               src={item?.imageUrl}

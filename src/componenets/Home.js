@@ -1,21 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 import { AlbumContext, MusicContext } from "../context/ContextAl";
-import { useSelector } from "react-redux";
-import { selectUser } from "../reducer/VideoReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistory, getVideo, selectUser } from "../reducer/VideoReducer";
 
 function Home() {
   const { Data } = useContext(MusicContext);
+  const [data,setData]=useState()
   const login =useSelector(selectUser)
-     
+     const dispatch = useDispatch()
 
+     
+      const place= async (item) => {
+        fetch(`http://localhost:4000/api/orders/post`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+          body:JSON.stringify({
+            name: item?.name,
+            title: item?.title, 
+            
+            imageUrl: item.imageUrl,
+              userName: login?.name,
+              user: login?.email,
+              image:login?.imageUrl
+          })
+      
+        },).then((res) => {
+          res.json().then((data) => {
+            localStorage.setItem("history", JSON.stringify(data));
+           dispatch(getHistory(data))
+           
+            console.log(data, "oooooooo");
+          });
+        });
+      };
+ 
+      
   
   return (
-    <div className="j justify-between overflow-y-auto h-screen border-s-rose-900 md:grid grid md:grid-cols-4 grid-cols-2 ">
+    <div    className="j justify-between overflow-y-auto h-screen border-s-rose-900 md:grid grid md:grid-cols-4 grid-cols-2 ">
       {Data?.map((item, keys) => (
-        <button key={keys} className=" m-2  ">
+        <button key={keys} className="  " m-2 onClick={()=>place(item)} >
           <Link to={`/room/${item?._id}/${item?.postBy}`}>
             <img
               src={item?.imageUrl}

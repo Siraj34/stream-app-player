@@ -12,6 +12,9 @@ const initialState = {
   video: localStorage.getItem('video')
     ? JSON.parse(localStorage.getItem('video'))
     : [],
+    history: localStorage.getItem('history')
+    ? JSON.parse(localStorage.getItem('history'))
+    : [],
   commentSEND: localStorage.getItem('commentSEND')
     ? JSON.parse(localStorage.getItem('commentSEND'))
     : [],
@@ -40,13 +43,17 @@ export const dataSlice = createSlice({
       state.login = null
     },
   
+    getHistory: (state, action) => {
+      state.history = action.payload
+      localStorage.setItem('video', JSON.stringify(state.history))
+    },
 
   },
 })
 
 export const {
   getLoginOut,
- 
+ getHistory,
   getVideo,
   getComment,
    getLogin,
@@ -57,7 +64,7 @@ export const {
 
 export const selectUser = (state) => state.basket.login
 
-
+export const selectHistory = (state) => state.basket.history
 export const selectVideo = (state) => state.basket.video
 export const selectComment = (state) => state.basket.commentSEND
 

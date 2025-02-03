@@ -50,6 +50,7 @@ import SideVideo from "./SideVideo";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getShare,
+  getVideo,
   selectShare,
   selectUser,
   selectVideo,
@@ -307,17 +308,19 @@ function Video() {
     addViwes();
   }, [id]);
 
+
+
   console.log(posts, "data ta");
   return (
     <div
       className=" relative items-center justify-center right-0 left-0 overflow-y-auto 
       w-[800px] md:min-h-[600px] min-h-[900px]  md:bg-black    bg-black "
-    >
+  >
       <div>
         <div className=" md:relative  relative  top-0">
           {" "}
           <a>
-            <div>
+            <div >
               <video
                 controls
                 ref={audio}

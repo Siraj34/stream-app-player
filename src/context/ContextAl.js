@@ -41,7 +41,7 @@ const audio = useRef();
   
  useEffect(() => {
   const getfetch = async () => {
-  const  {data}  = await axios.get("https://room-main.vercel.app/api/movies/get")
+  const  {data}  = await axios.get("http://localhost:4000/api/movies/get")
 
   
   localStorage.setItem('video', JSON.stringify(data))
@@ -202,19 +202,7 @@ const audio = useRef();
      return randomNumber()
   }
 
-  useEffect(() => {
-    async function name(e) {
-      try {
-        const { data } = await axios.get(
-          `https://room-main.vercel.app/api/comment/get`
-        );
-        setGet(data);
-      } catch (error) {
-        toast.error(error);
-      }
-    }
-    name();
-  }, []);
+  
  
 
   const vaules = {

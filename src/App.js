@@ -19,6 +19,8 @@ import UploadWidget from './componenets/UploadWidget';
 import SecureUpload from './componenets/SecureUpload';
 import VideoSideBar from './componenets/VideoSideBar';
 import Footer from './componenets/Footer';
+import HistoryScreen from './screen/HistoryScreen';
+import ShowScreen from './screen/ShowScreen';
  
 
 
@@ -48,6 +50,7 @@ function App() {
         
        <Route path='/post' element={<UploadWidget/>} />
             <Route path='/secure' element={<SecureUpload/>} />
+            <Route path='/history/:id' element={<ShowScreen/>} />
       
        </Routes>
        <Routes>

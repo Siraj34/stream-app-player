@@ -140,7 +140,15 @@ function Header() {
               </h1>
             </button>
 
-        
+            <button>
+            <div>
+                <BiMovie className="m-3" />
+              </div>
+              <h1 className="m-2">
+                <Link to={`/history/${login?._id}`}> History</Link>
+              </h1>
+            </button>
+          
 
             
             <button

@@ -10,8 +10,8 @@ export default function VidoeHome() {
        
        <div
         className="
-           flex  justify-center items-center 
-            bg-purple-700  md:min-h-full  overflow-y-auto"
+           flex 
+            bg-purple-700 h-full   overflow-y-auto"
       >
         <Video/>
 
@@ -21,8 +21,8 @@ export default function VidoeHome() {
     
       <div
          className="
-        flex  
-            bg-purple-700  md:min-h-full  overflow-y-auto"
+      
+               max-h-full overflow-y-auto"
       >
          <SideVideo/>
       </div>

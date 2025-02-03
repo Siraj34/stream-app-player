@@ -313,15 +313,15 @@ function Video() {
   console.log(posts, "data ta");
   return (
     <div
-      className=" relative items-center justify-center right-0 left-0 overflow-y-auto 
-      w-[800px] md:min-h-[600px] min-h-[900px]  md:bg-black    bg-black "
+      className=" relative  right-0 left-0 overflow-y-auto 
+      w-full h-full  md:bg-black    bg-black "
   >
-      <div>
-        <div className=" md:relative  relative  top-0">
+     
+        <div className=" md:relative  relative  top-0  bg-slate-600">
           {" "}
           <a>
             <div >
-              <video
+              <video 
                 controls
                 ref={audio}
                 src={vdata?.videoUrl}
@@ -329,7 +329,7 @@ function Video() {
                 onLoadStart={handload}
                 onTimeUpdate={timeHndel}
                 onEnded={endAudio}
-                className="min-h-[558px]  min-w-full
+                className="md:h-[500px]  md:w-[900px]  h-[500px]  w-fit
          bg-inherit  "
                 width={`100%`}
               />
@@ -510,7 +510,7 @@ function Video() {
               </button>
             </span>
           </div>
-          <div className="absolute left-0 right-0 text-white top-[555px] flex justify-between">
+          <div className="left-0 right-0 text-white top-[555px] flex justify-between">
             <button className="flex m-3 p-2 ">
               <span className=" text-white">
                 <Download />
@@ -683,7 +683,7 @@ function Video() {
             </div>
           )}
         </div>
-      </div>
+      
     </div>
   );
 }

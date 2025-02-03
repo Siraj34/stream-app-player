@@ -44,13 +44,13 @@ function SideVideo() {
     
   console.log(video, "tttttttt history");
   return (
-    <div className="max-w-[350px] max-h-[400px] flex flex-wrap  justify-center  ">
+    <div className="md:w-[350px] w-full h-[800px] flex flex-wrap justify-center   ">
       {Data?.map((item, keys) => (
-        <button key={keys} className=" m-2  " onClick={()=>place(item)}>
+        <button key={keys} className="   " onClick={()=>place(item)}>
           <Link to={`/room/${item._id}/${item?.postBy}`}>
             <button><img
               src={item?.imageUrl}
-              className="md:-h-[300px] md:w-[300px] h-[300px] w-[300px] 
+              className="md:-h-[300px] ]  md:w-[300px] h-[260px] w-screen
         rounded-lg bg-inherit "
             />
             </button>

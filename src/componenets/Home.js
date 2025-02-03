@@ -45,7 +45,7 @@ function Home() {
   return (
     <div    className="j justify-between overflow-y-auto h-screen border-s-rose-900 md:grid grid md:grid-cols-4 grid-cols-2 ">
       {Data?.map((item, keys) => (
-        <button key={keys} className="  " m-2 onClick={()=>place(item)} >
+        <button key={keys} className=" m-2 " m-2 onClick={()=>place(item)} >
           <Link to={`/room/${item?._id}/${item?.postBy}`}>
             <img
               src={item?.imageUrl}

@@ -14,7 +14,7 @@ function Home() {
 
      
       const place= async (item) => {
-        fetch(`http://localhost:4000/api/orders/post`, {
+        fetch(`https://stream-data-app.vercel.app/api/orders/post`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -23,11 +23,13 @@ function Home() {
           body:JSON.stringify({
             name: item?.name,
             title: item?.title, 
-            
-            imageUrl: item.imageUrl,
+            postBy:item?.postBy,
+            videoUrl:item.videoUrl,
+             imageUrl: item.imageUrl,
               userName: login?.name,
               user: login?.email,
-              image:login?.imageUrl
+              image:login?.imageUrl,
+              movieId:item?._id
           })
       
         },).then((res) => {

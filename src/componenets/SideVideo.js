@@ -15,20 +15,22 @@ function SideVideo() {
     
     
     const place= async (item) => {
-      fetch(`http://localhost:4000/api/orders/post`, {
+      fetch(`https://stream-data-app.vercel.app/api/orders/post`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
         body:JSON.stringify({
-          name: item?.name,
-          title: item?.title, 
-          
-          imageUrl: item.imageUrl,
-            userName: login?.name,
-            user: login?.email,
-            image:login?.imageUrl
+          name:item?.name,
+            title: item?.title, 
+            postBy:item?.postBy,
+            videoUrl:item.videoUrl,
+             imageUrl: item.imageUrl,
+              userName: login?.name,
+              user: login?.email,
+              image:login?.imageUrl,
+              movieId:item?._id
         })
     
       },).then((res) => {

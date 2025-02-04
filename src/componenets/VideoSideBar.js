@@ -13,7 +13,7 @@ function VideoSideBar() {
     useEffect(() => {
         const getfetch = async () => {
           const { data } = await axios.get(
-            `http://localhost:4000/api/movies/room/${id}`
+            `https://stream-data-app.vercel.app/api/movies/room/${id}`
           );
           setvdata(data);
         };

@@ -144,7 +144,7 @@ function Video() {
   useEffect(() => {
     const getfetch = async () => {
       const { data } = await axios.get(
-        `http://localhost:4000/api/movies/room/${id}`
+        `https://stream-data-app.vercel.app/api/movies/room/${id}`
       );
       setvdata(data);
     };
@@ -152,7 +152,7 @@ function Video() {
   }, [id]);
 
   const addLikes = () => {
-    fetch(`http://localhost:4000/api/movies/like/${id}/${login?._id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/movies/like/${id}/${login?._id}`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -172,7 +172,7 @@ function Video() {
 
   const addDisLikes = () => {
     fetch(
-      `http://localhost:4000/api/movies/dislike/${id}/${login?._id}`,
+      `https://stream-data-app.vercel.app/api/movies/dislike/${id}/${login?._id}`,
       {
         method: "post",
         headers: {
@@ -197,7 +197,7 @@ function Video() {
     e.preventDefault();
 
     try {
-      await axios.post(`http://localhost:4000/api/comments/post`, {
+      await axios.post(`https://stream-data-app.vercel.app/api/comments/post`, {
           videoId: Data[controls]?._id,
           message: comments,
           image: login?.imageUrl,
@@ -216,7 +216,7 @@ function Video() {
   useEffect(() => {
     async function get() {
       const { data } = await axios.get(
-        `http://localhost:4000/api/comments/get/${id}`
+        `https://stream-data-app.vercel.app/api/comments/get/${id}`
       );
 
       localStorage.setItem("commentSEND", JSON.stringify(data));
@@ -229,7 +229,7 @@ function Video() {
  
 
   const followUser = (userId) => {
-    fetch(`http://localhost:4000/api/user/follow`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/follow`, {
       method: "PUT",
 
       headers: {
@@ -248,7 +248,7 @@ function Video() {
   };
 
   const unfollowUser = (userId) => {
-    fetch(`http://localhost:4000/api/user/unfollow`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/unfollow`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -268,7 +268,7 @@ function Video() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/user/user/${userId}`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/user/${userId}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -290,7 +290,7 @@ function Video() {
 
   useEffect(() => {
     const addViwes = async () => {
-      fetch(`http://localhost:4000/api/movies/views/${id}`, {
+      fetch(`https://stream-data-app.vercel.app/api/movies/views/${id}`, {
         method: "put",
         headers: {
           "Content-Type": "application/json",

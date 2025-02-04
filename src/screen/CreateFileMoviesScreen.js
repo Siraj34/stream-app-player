@@ -85,7 +85,7 @@ function Upload() {
 
   const submitbutton = (e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/api/movies/post', {
+    fetch('https://stream-data-app.vercel.app/api/movies/post', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

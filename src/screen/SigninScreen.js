@@ -26,7 +26,7 @@ function Login() {
 
   const submitbutton = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:4000/api/user/signin`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/signin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

@@ -20,7 +20,7 @@ export default function FollowingScreen() {
 
   useEffect(() => {
     const submitbutton = () => {
-      fetch("http://localhost:4000/api/movies/myfollwingpost", {
+      fetch("https://stream-data-app.vercel.app/api/movies/myfollwingpost", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function FollowingScreen() {
 
 useEffect(() => {
     const submitbutton = () => {
-      fetch("http://localhost:4000/api/movies/myfollowers", {
+      fetch("https://stream-data-app.vercel.app/api/movies/myfollowers", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

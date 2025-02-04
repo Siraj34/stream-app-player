@@ -4,7 +4,7 @@ import { MusicContext } from "../context/ContextAl";
 import { Italic, PlusCircle } from "lucide-react";
 import { useSelector } from "react-redux";
 import { selectHistory, selectUser, selectVideo } from "../reducer/VideoReducer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function HistoryScreen() {
@@ -22,7 +22,7 @@ export default function HistoryScreen() {
 
   
   useEffect(() => {
-    fetch(`http://localhost:4000/api/user/order/${id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/order/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -40,7 +40,7 @@ export default function HistoryScreen() {
 
   useEffect(() => {
     const submitbutton = () => {
-      fetch("http://localhost:4000/api/orders/history", {
+      fetch("https://stream-data-app.vercel.app/api/orders/history", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -74,10 +74,11 @@ console.log(data, "history11111");
          {data?.map((item)=>(
       <button className=" m-2 text-white " key={item}>
       <div>
+      <Link to={`/room/${item?.movieId}/${item?.postBy?._id}`}>
         <img
           src={item?.imageUrl}
           className="md:min-h-[150px] md:min-w-[150px] h-[100px]  w-[100px]  "
-        />
+        /></Link>
 
         <div className=" flex flex-col ">
           <div className="flex ml-2">

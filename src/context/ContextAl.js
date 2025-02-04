@@ -61,7 +61,7 @@ const SearchShorts =()=>{
   
  useEffect(() => {
   const getfetch = async () => {
-  const  {data}  = await axios.get("http://localhost:4000/api/movies/get")
+  const  {data}  = await axios.get("https://stream-data-app.vercel.app/api/movies/get")
 
   
   localStorage.setItem('video', JSON.stringify(data))
@@ -227,7 +227,7 @@ const SearchShorts =()=>{
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `http://localhost:4000/api/movies/search${query}`
+        `https://stream-data-app.vercel.app/api/movies/search${query}`
       )
       setVideos(res.data)
     }
@@ -237,7 +237,7 @@ const SearchShorts =()=>{
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `http://localhost:4000/api/movies/searchs${query}`
+        `https://stream-data-app.vercel.app/api/movies/searchs${query}`
       )
       setVideosTags(res.data)
     }
@@ -247,7 +247,7 @@ const SearchShorts =()=>{
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `http://localhost:4000/api/movies/tags${query}`
+        `https://stream-data-app.vercel.app/api/movies/tags${query}`
       )
       setMovies(res.data)
     }
@@ -257,7 +257,7 @@ const SearchShorts =()=>{
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `http://localhost:4000/api/movies/slug`
+        `https://stream-data-app.vercel.app/api/movies/slug`
       )
       setBar(res.data)
     }

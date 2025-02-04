@@ -37,7 +37,7 @@ export default function UserChannel() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/user/movies/${id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/movies/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -53,7 +53,7 @@ export default function UserChannel() {
   }, [isFollow]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/user/user/comment/${id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/user/comment/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -66,7 +66,7 @@ export default function UserChannel() {
   }, []);
 
   const adddelete = (_id) => {
-    fetch(`http://localhost:4000/api/movies/delete/${_id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/movies/delete/${_id}`, {
       method: "delete",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

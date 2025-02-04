@@ -43,7 +43,7 @@ const SecureUpload = () => {
 
   const getSignatureForUpload = async (folder) => {
     try {
-      const res = await axios.post("https://room-main.vercel.app/api/sign/post", {
+      const res = await axios.post("https://stream-data-app.vercel.app/api/sign/post", {
         folder,
       });
       return res.data;
@@ -68,7 +68,7 @@ const SecureUpload = () => {
       );
       const config = {};
 
-      await fetch("http://localhost:4000/api/movies/post", {
+      await fetch("https://stream-data-app.vercel.app/api/movies/post", {
         method: "POST",
         headers: {
           Accept: "application/json",

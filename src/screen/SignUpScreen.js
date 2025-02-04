@@ -80,7 +80,7 @@ function SignUp() {
 
   const submitbutton = (e) => {
     e.preventDefault();
-    fetch("http://localhost:4000/api/user/signup/", {
+    fetch("https://stream-data-app.vercel.app/api/user/signup/", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

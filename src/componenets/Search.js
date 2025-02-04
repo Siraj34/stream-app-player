@@ -10,7 +10,7 @@ export default function Search() {
   console.log(videos,'hhhhhhhhhhhhh4')
   
   return (
-       <div    className="j justify-between overflow-y-auto bg-red-400 h-screen border-s-rose-900 md:grid grid md:grid-cols-4 grid-cols-2 ">
+       <div    className="j justify-between overflow-y-auto bg-red-400  h-[450px] border-s-rose-900 md:grid grid md:grid-cols-4 grid-cols-2 ">
           {videos?.map((item, keys) => (
             <button key={keys} className=" m-2 " >
             <Link to={`/room/${item?._id}/${item?.postBy}`}>

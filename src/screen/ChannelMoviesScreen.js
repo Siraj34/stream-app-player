@@ -53,7 +53,7 @@ export default function UserChannel() {
   }, [isFollow]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/user/comment/${id}`, {
+    fetch(`https://stream-data-app.vercel.app/api/user/comment/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

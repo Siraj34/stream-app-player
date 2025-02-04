@@ -24,6 +24,7 @@ function Upload() {
   const [name, setName] = useState('')
   const [views, setViews] = useState('')
   const [slug, setSlug] = useState('')
+  
  const [star, setStar] = useState('')
   const [title, setTitle] = useState('')
   const [get, setget] = useState([])
@@ -94,7 +95,7 @@ function Upload() {
         ...data,
         name,
         title,
-       
+     
         slug,
         userName: login?.name,
         user: login?.email,
@@ -174,6 +175,8 @@ function Upload() {
           placeholder="Example: crime/action/drama..."
           onChange={(e) => setSlug(e.target.value)}
         />
+        
+       
 
          
      

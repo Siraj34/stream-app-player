@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import {
   BiCloset,
+  BiHistory,
   BiLogIn,
   BiMenu,
   BiMovie,
@@ -22,11 +23,10 @@ import { AlbumContext, MusicContext } from "../context/ContextAl";
 import { CgClose, CgMenuMotion } from "react-icons/cg";
 
 function Header() {
-  const { search, setSearch, SearchBar, setShorts, shorts, SearchShorts } =
+  const { search, setSearch, SearchBar, setShorts, shorts, SearchShorts ,SearchTags,setSearchTags} =
     useContext(MusicContext);
   const login = useSelector(selectUser);
   const [sidebar, setSidebar] = useState(false);
-  const [tags, setTags] = useState("");
   const dispatch = useDispatch();
   const router = useNavigate();
   const SideBarHead = () => {
@@ -67,13 +67,14 @@ function Header() {
         <div className="  m-3 md:flex  hidden justify-center items-center p-1 ">
             <input
               type="search"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
+              value={SearchTags}
+              onChange={(e) => setSearchTags(e.target.value)}
               placeholder="search"
               className=" h-10   pl-5 text-black bg-slate-400  md:max-w-[1000px] max-w-[300px] md:w-[250px]"
             />
             <button
-              onClick={() => router(`/search?q=${tags}`)}
+              onClick={() => router(`/search?q=${SearchTags}`)}
+              
               className="w-10 h-10 mr-2 text-xl  bg-slate-200 "
             >
               <LuSearchCheck className="m-2 text-2xl" />
@@ -115,53 +116,14 @@ function Header() {
               {sidebar ? <BiCloset /> : <MdMenu />}
             </div>
 
-            <button
-              className=" text-sm m-2 p-2 h-10 
-                font-medium flex  "
-            >
-              <div>
-                 <img  src={login?.imageUrl} alt="" className="m-2 w-[25px] rounded-full"/>
-              </div>
-              <Link to={"/"}>
-                <h1 className="m-2">Home</h1>
-               
-              </Link>
-            </button>
+          
+           
+          
 
-            <button
-              className=" text-sm m-2 p-2 h-10 
-                font-medium flex  "
-            >
-              <div>
-                <BiMovie className="m-3" />
-              </div>
-              <h1 className="m-2">
-                <Link to={"/secure"}> Secure Movies</Link>
-              </h1>
-            </button>
-
-            <button>
-            <div>
-                <BiMovie className="m-3" />
-              </div>
-              <h1 className="m-2">
-                <Link to={`/history/${login?._id}`}> History</Link>
-              </h1>
-            </button>
           
 
             
-            <button
-              className=" text-sm m-2 p-2 h-10 
-                font-medium flex  "
-            >
-              <div>
-                <GrChannel className="m-3" />
-              </div>
-              <h1 className="m-2">
-                <Link to={`/channelMovies/${login?._id}`}>Channel Movies</Link>
-              </h1>
-            </button>
+           
 
            
 
@@ -233,13 +195,13 @@ function Header() {
            <div className="  m-3 flex justify-center items-center p-1   ">
             <input
               type="search"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
+              value={SearchTags}
+              onChange={(e) => setSearchTags(e.target.value)}
               placeholder="search"
               className=" h-10   pl-5 text-black bg-slate-400 "
             />
             <button
-              onClick={() => router(`/search?q=${tags}`)}
+              onClick={() => router(`/search?q=${SearchTags}`)}
               className="w-10 h-10 mr-2 text-xl  bg-slate-200 "
             >
               <LuSearchCheck className="m-2 text-2xl" />

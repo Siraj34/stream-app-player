@@ -66,7 +66,7 @@ export default function HistoryScreen() {
 
 console.log(data, "history11111");
   return (
-    <div className=" bg-gray-900 h-full overflow-y-auto  ">
+    <div className=" bg-gray-900 h-[400px] overflow-y-auto  ">
        <div className="flex m-3 p-3 text-white">
         <div className="m-2 p-2 text-2xl font-semibold   ">
         History</div>  </div> 

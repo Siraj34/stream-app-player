@@ -21,6 +21,10 @@ import VideoSideBar from './componenets/VideoSideBar';
 import Footer from './componenets/Footer';
 import HistoryScreen from './screen/HistoryScreen';
 import ShowScreen from './screen/ShowScreen';
+import SideBar from './componenets/SideBar';
+import Search from './componenets/Search';
+import Tags from './componenets/Tags';
+import TagSearch from './componenets/TagSearch';
  
 
 
@@ -39,7 +43,9 @@ function App() {
     <div>
     <Header/>
     <div className=' relative'>
-      
+    
+       <SideBar />
+   
    </div>
    
     
@@ -59,6 +65,9 @@ function App() {
        <Routes>
         <Route  path='/signup' element={<SignUp/>}/>
         <Route path='/video/:id/' element={<VideoSideBar/>} />
+        <Route path="/search" element={<Search/>} />
+        <Route path="/searchs" element={<TagSearch/>} />
+        <Route path="/tags" element={<Tags/>} />
 
        </Routes>
        <Routes>

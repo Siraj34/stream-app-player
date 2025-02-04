@@ -3,6 +3,7 @@ import { Repeat, Repeat1, Shuffle } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { getVideo } from "../reducer/VideoReducer";
 import toast from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 
  
 const {
@@ -32,11 +33,30 @@ const audio = useRef();
   const [search, setsearch] = useState(false)
   const dispatch = useDispatch()
   const [get, setGet] = useState([]);
-  
+  const [shorts, setShorts] = useState(false)
+  const [videos, setVideos] = useState([])
+  const [videosTags, setVideosTags] = useState([])
+  const [movies, setMovies] = useState([])
+  const[q,setq] =useState('')
+  const[tags,setTags] =useState('')
+  const[slugs,setSlugs] =useState('')
+  const [bar, setBar] = useState([])
+  const [SearchTags, setSearchTags] = useState("");
+ 
+  const query = useLocation().search
+ 
+ 
  // const FILE_URL = `http://localhost:3000/room/${Data[play]._id}`
   
 
- 
+ const SearchBar =()=>{
+  setsearch(!search)
+}
+
+
+const SearchShorts =()=>{
+  setShorts(!shorts)
+}
 
   
  useEffect(() => {
@@ -202,10 +222,61 @@ const audio = useRef();
      return randomNumber()
   }
 
-  
+
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(
+        `http://localhost:4000/api/movies/search${query}`
+      )
+      setVideos(res.data)
+    }
+    fetchVideos()
+  }, [query, setq,q])
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(
+        `http://localhost:4000/api/movies/searchs${query}`
+      )
+      setVideosTags(res.data)
+    }
+    fetchVideos()
+  }, [query, setq,q])
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(
+        `http://localhost:4000/api/movies/tags${query}`
+      )
+      setMovies(res.data)
+    }
+    fetchVideos()
+  }, [query, tags,setTags])
+    
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(
+        `http://localhost:4000/api/movies/slug`
+      )
+      setBar(res.data)
+    }
+    fetchVideos()
+  }, [query,setq,q])
  
 
   const vaules = {
+    SearchTags, setSearchTags,
+    videosTags,setVideosTags,
+    setBar,bar,
+    setTags,tags,
+    movies,setMovies,
+    setq,q,
+    shorts,setShorts,
+    videos,setVideos,
+    
+    SearchShorts,
+    SearchBar,
     get,
     audio,
     playing,

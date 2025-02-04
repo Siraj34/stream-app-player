@@ -4,7 +4,7 @@ import FollowingScreen from './FollowingScreen'
 
 export default function ShowScreen() {
   return (
-    <div>
+    <div className=' h-screen overflow-y-auto bg-green-600'>
         
         <div><FollowingScreen/></div>
         <div><HistoryScreen/></div>

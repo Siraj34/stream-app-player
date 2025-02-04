@@ -27,7 +27,7 @@ export default function SideBar() {
       {search ? (
           <div className=" 
 
-          bg-zinc-900  text-sm h-[500px]  w-[250px] absolute right-0 left-0 text-white  top-[0px]">
+          bg-zinc-900  text-sm h-[350px] overflow-y-auto  w-[250px] absolute right-0 left-0 text-white  top-[0px]">
             <span onClick={SearchBar} >{!search ?<BiMenu className='m-3'/>:<CgClose className='m-3'/>}</span>
             <button className='h-10 w-[200px] rounded-xl text-black font-extrabold m-2
             text-center border-b-2

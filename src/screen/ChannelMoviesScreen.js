@@ -171,9 +171,9 @@ export default function UserChannel() {
         {posts?.map((item) => (
           <div>
             <div className="flex  justify-between text-black border-b-2 border-black  md:m-0 m-2 ">
-            <button><Link to={`/room/${item?._id}`}> 
+            <button><Link to={`/room/${login?._id}`}> 
                 <img
-                  src={item.imageUrl}
+                  src={item?.imageUrl}
                   alt=""
                   className="md:w-24 md:m-2 m-0  md:h-10 h-10 w-10 overflow-y-auto"
                 />   

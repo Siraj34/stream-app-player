@@ -107,7 +107,7 @@ function Header() {
 
       <div className="  relative">
         {sidebar ? (
-          <div className=" bg-zinc-900  text-sm overflow-y-auto md:h-[400px] h-[400px] w-[250px]  
+          <div className=" bg-zinc-900  text-sm overflow-y-auto md:h-[400px] h-[250px] w-[250px]  
            absolute right-0 text-white  top-[0px]">
             <div
               onClick={() => setSidebar(!sidebar)}

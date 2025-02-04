@@ -20,8 +20,8 @@ function Footer() {
    const login = useSelector(selectUser)
    const router = useNavigate()
   return (
-    <button className="flex md:justify-between justify-around  items-center w-full  text-white font-bold  h-16 text-center bg-black">
-      <div className="flex">
+    <button className="flex md:justify-center text-sm justify-around items-center w-full  text-white font-bold  h-16 text-center bg-black">
+      <div className="flex m-1">
         <div className="flex ">
           <span className="md:p-2 m-1" >
             <Home />
@@ -31,13 +31,6 @@ function Footer() {
           </span>
         </div>
 
-        <div className="flex ">
-          <span className="md:p-2 m-1 ">
-            <SubscriptIcon />
-          </span>
-          <span className="md:p-2 m-1" onClick={() => router(`/history/${login?._id}`)}>
-          Subscriptions</span>
-        </div>
       </div>
     
       <div className="flex">

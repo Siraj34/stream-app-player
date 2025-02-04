@@ -204,7 +204,9 @@ function Video() {
                videoId: vdata?._id,
                message: comments,
               image: login?.imageUrl,
-              name: login?.name, })
+              name: login?.name,
+            postBy:login?._id })
+              
           console.log(data,'comments')    
     } catch (error) {
       console.log(error)

@@ -14,7 +14,7 @@ import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import { selectUser } from "../reducer/VideoReducer";
 
-import { CreativeCommonsIcon, MessageCircle, Subscript, SubscriptIcon, Video, View } from "lucide-react";
+import { CreativeCommonsIcon, MessageCircle, Subscript, SubscriptIcon, ThumbsUp, Video, View } from "lucide-react";
 import { MusicContext } from "../context/ContextAl";
 
 export default function UserChannel() {
@@ -53,7 +53,7 @@ export default function UserChannel() {
   }, [isFollow]);
 
   useEffect(() => {
-    fetch(`https://stream-data-app.vercel.app/api/user/user/comment/${id}`, {
+    fetch(`http://localhost:4000/api/user/comment/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -83,9 +83,15 @@ export default function UserChannel() {
         
         }
       });
+
+
+
   };
 
-  console.log(comments, "kkkk");
+  
+   const item  =  posts.map((item)=>(item?.likes?.length))
+ 
+  console.log(posts, "kkkk");
   return (
     <div className=" md:min-h-screen  flex flex-col  bg-purple-500">
       <div>
@@ -113,18 +119,18 @@ export default function UserChannel() {
 
         <div className="m-2">
         
-          <h1> <Video/></h1>
+          <h1> <ThumbsUp/></h1>
         </div>
 
         <div className="m-2">
-          <h1><CreativeCommonsIcon/></h1>
+          <h1><View/></h1>
         </div>
         <div className="m-2">
        
           <h1><Subscript/></h1>
         </div>
       </tbody>
-
+ 
       <tbody className="flex justify-around  min-w-max-[200px] text-black font-bold ">
         <div className="m-2">
         <h1>comment</h1>
@@ -132,14 +138,17 @@ export default function UserChannel() {
         </div>
 
         <div className="m-2">
-      
-        <h1> Like</h1>
-          <h1>{posts[controls]?.likes} </h1>
+          <h1> Like</h1>
+       
+        <h1>{item.length} </h1>
+        
+        
+          
         </div>
 
         <div className="m-2">
            <span>Views</span>
-          <h1>{posts[controls]?.views}</h1>
+          <h1>{item?.length}</h1>
          
         </div>
         <div className="m-2">
@@ -147,7 +156,7 @@ export default function UserChannel() {
           <h1>{user?.followers?.length}</h1>
         </div>
       </tbody>
-
+ 
       </table>
 
       <div className=" overflow-y-auto h-[600px]">
@@ -156,10 +165,10 @@ export default function UserChannel() {
             <ImImage className="md:w-24 md:h-10 overflow-y-auto" />
           </button>
           <button>
-            <BiAlbum className="md:w-24 md:h-10 overflow-y-auto" />
+            <ThumbsUp className="md:w-24 md:h-10 overflow-y-auto" />
           </button>
           <button>
-            <GrAction className="md:w-24 md:h-10 overflow-y-auto" />
+            <View className="md:w-24 md:h-10 overflow-y-auto" />
           </button>
           <button>
             <ImDatabase className="md:w-24 md:h-10 overflow-y-auto" />
@@ -184,13 +193,13 @@ export default function UserChannel() {
                 className="rounded-xl   m-2 
           font-extrabold text-center overflow-y-auto md:h-16 md:w-24 text-sm w-10 "
               >
-                {item?.name}
+                {item?.likes}
               </button>
               <button
                 className="rounded-xl   m-2 
           font-extrabold text-center overflow-y-auto  w-10 md:h-10 md:w-24 text-sm "
               >
-                {dayjs(item?.createdAt).format("DD/MM/YYYY")}
+                {item?.views}
               </button>
               <button
                 className="rounded-xl   m-2 
@@ -201,6 +210,7 @@ export default function UserChannel() {
               <button onClick={() => adddelete(item?._id)}>
                 <FiDelete className="md:w-24 md:h-10 overflow-y-auto" />
               </button>
+
             </div>
           </div>
         ))}

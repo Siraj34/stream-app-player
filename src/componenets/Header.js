@@ -21,6 +21,7 @@ import { GrChannel } from "react-icons/gr";
 import { LuDrama, LuSearchCheck } from "react-icons/lu";
 import { AlbumContext, MusicContext } from "../context/ContextAl";
 import { CgClose, CgMenuMotion } from "react-icons/cg";
+import { Image } from "lucide-react";
 
 function Header() {
   const { search, setSearch, SearchBar, setShorts, shorts, SearchShorts ,SearchTags,setSearchTags} =
@@ -117,7 +118,7 @@ function Header() {
             </div>
 
           
-           
+            
           
 
           
@@ -125,7 +126,17 @@ function Header() {
             
            
 
-           
+            <button
+              className=" text-sm m-2 p-2 h-10 
+                font-medium flex  "
+            >
+              <div>
+                <Image className="m-3" />
+              </div>
+              <h1 className="m-2">
+                <Link to={"/signin"}><img src={login?.imageUrl} alt="" className="w-[25px] h-[25px] rounded-full"/>?</Link>
+              </h1>
+            </button>
 
             <button
               className=" text-sm m-2 p-2 h-10 

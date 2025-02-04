@@ -49,8 +49,10 @@ import axios from "axios";
 import SideVideo from "./SideVideo";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getComment,
   getShare,
   getVideo,
+  selectComment,
   selectShare,
   selectUser,
   selectVideo,
@@ -66,9 +68,10 @@ import { MusicContext } from "../context/ContextAl";
 
 function Video() {
   const params = useParams();
-  const { id } = params;
-  const { userId } = params;
+  const {id} = useParams()
   
+  const { userId } = params;
+  const commentSEND = useSelector(selectComment)
   const login = useSelector(selectUser);
   const [isFollow, setIsFollow] = useState(false);
   const [user, setUser] = useState("");
@@ -193,38 +196,48 @@ function Video() {
       });
   };
 
-  async function CommenSend(e) {
-    e.preventDefault();
-
+  const CommenSend = async (e) => {
+    
+    e.preventDefault()
     try {
-      await axios.post(`https://stream-data-app.vercel.app/api/comments/post`, {
-          videoId: Data[controls]?._id,
-          message: comments,
-          image: login?.imageUrl,
-          name: login?.name,
-          postBy: login?._id,
-        })
-        .then((res) => {
-          setComments(res);
-        });
-      setComments("");
+       const {data}   =  await axios.post('https://stream-data-app.vercel.app/api/comments/post', {
+               videoId: vdata?._id,
+               message: comments,
+              image: login?.imageUrl,
+              name: login?.name, })
+          console.log(data,'comments')    
     } catch (error) {
-      toast.error(error);
+      console.log(error)
     }
+    
+      
+
+      setComments('')
+    
   }
 
   useEffect(() => {
-    async function get() {
-      const { data } = await axios.get(
-        `https://stream-data-app.vercel.app/api/comments/get/${id}`
-      );
-
-      localStorage.setItem("commentSEND", JSON.stringify(data));
-      setimassge(data);
+   async function get() {
+     
+     
+     try {
+       await axios.get(`https://stream-data-app.vercel.app/api/comments/get/${id}`).then((res)=>{
+         setimassge(res.data)
+    dispatch(getComment(res.data))
+    localStorage.setItem('commentSEND', JSON.stringify(res.data))
+      })
+     } catch (error) {
+      console.log(error)
+     }
+  
+ 
+ 
+ 
     }
-    get();
-  }, [id]);
-  console.log(imassge, "testf55");
+     get()
+  }, [])
+
+  console.log(commentSEND, "testf556");
 
  
 
@@ -310,7 +323,7 @@ function Video() {
 
 
 
-  console.log(posts, "data ta");
+  console.log(imassge, "data ta");
   return (
     <div
       className=" relative  right-0 left-0 overflow-y-auto 
@@ -610,9 +623,9 @@ function Video() {
                
                 <div></div>
                 <div className=" h-[400px] bg-slate-500 text-black font-bold overflow-y-auto  ">
-                  {imassge?.map((item) => (
-                    <div className="m-2 p-2 justify-between flex ">
-                      <div>
+                {commentSEND?.map((item)=>(
+                  <div className="m-2 p-2 justify-between flex ">
+                      <div key={item}>
                         <div className="flex">
                           <span className="m-2 rounded-full w-[40px] h-[40px] flex">
                             <img
@@ -640,7 +653,10 @@ function Video() {
                         </span>
                       </div>
                     </div>
-                  ))}
+                 
+                ))}
+                    
+
                 </div>
                 <div className=" flex justify-around bg-purple-400">
                   <div className="flex m-2">

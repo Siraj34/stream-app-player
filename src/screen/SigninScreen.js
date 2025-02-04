@@ -12,6 +12,8 @@ import { AlbumContext } from "../context/ContextAl";
 import { url } from "../App";
 import { useDispatch } from "react-redux";
 import { getLogin } from "../reducer/VideoReducer";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 function Login() {
   const { search } = useLocation();
@@ -24,8 +26,9 @@ function Login() {
 
   const navegate = useNavigate();
 
-  const submitbutton = (e) => {
+  const ty = (e) => {
     e.preventDefault();
+
     fetch(`https://stream-data-app.vercel.app/api/user/signin`, {
       method: "post",
       headers: {
@@ -39,19 +42,40 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.error) {
-          console.log(data.error);
-        } else {
-          alert("Successfully Posted");
+        
+         
           dispatch(getLogin(data));
+          toast.success("Successfully Posted");
           //localStorage.setIte('login1', data)
           localStorage.setItem("jwt", data.admin);
 
           navegate("/");
         }
-      })
+      )
       .catch((err) => console.log(err));
   };
+
+  const submitbutton = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.post(
+        'https://stream-data-app.vercel.app/api/user/signin',
+        { email, password },{  headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },}
+      )
+     
+      console.log(data)
+      dispatch(getLogin(data))
+      //localStorage.setIte('login1', data)
+      localStorage.setItem('jwt', data.admin)
+      toast.success("Successfully Sign In");
+      navegate(redirect || '/')
+    } catch (error) {
+      alert('invalid email and password')
+    }
+  }
 
   const register = () => {};
   return (

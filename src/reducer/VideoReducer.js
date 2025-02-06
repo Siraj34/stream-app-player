@@ -18,6 +18,9 @@ const initialState = {
   commentSEND: localStorage.getItem('commentSEND')
     ? JSON.parse(localStorage.getItem('commentSEND'))
     : [],
+    list: localStorage.getItem('list')
+    ? JSON.parse(localStorage.getItem('list'))
+    : [],
 }
 
 export const dataSlice = createSlice({
@@ -48,6 +51,12 @@ export const dataSlice = createSlice({
       localStorage.setItem('video', JSON.stringify(state.history))
     },
 
+    getPlayVideo: (state, action) => {
+      state.list = action.payload
+      localStorage.setItem('list', JSON.stringify(state.list))
+    },
+
+
   },
 })
 
@@ -57,13 +66,13 @@ export const {
   getVideo,
   getComment,
    getLogin,
- 
+ getPlayVideo,
 } = dataSlice.actions
 
 
 
 export const selectUser = (state) => state.basket.login
-
+export const selectPlayList = (state) => state.basket.list
 export const selectHistory = (state) => state.basket.history
 export const selectVideo = (state) => state.basket.video
 export const selectComment = (state) => state.basket.commentSEND

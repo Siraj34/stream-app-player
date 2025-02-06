@@ -17,6 +17,7 @@ export default function HistoryScreen() {
   const params =useParams()
   const {id} = params
   const login = useSelector(selectUser);
+  
 
   
 

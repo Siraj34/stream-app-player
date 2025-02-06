@@ -26,7 +26,7 @@ import Search from './componenets/Search';
 import Tags from './componenets/Tags';
 import TagSearch from './componenets/TagSearch';
 import PlayList from './componenets/PlayList';
-import PlayVideo from './componenets/PlayVideo';
+import ChatVideo from './componenets/ChatVideo';
  
 
 
@@ -75,7 +75,7 @@ function App() {
        <Routes>
         <Route  path='/movies' element={<Upload/>}/>
         <Route  path='/play/:id' element={<PlayList/>}/>
-        <Route  path='/playList/:id' element={<PlayVideo/>}/>
+        <Route  path='/playList/:id' element={<ChatVideo/>}/>
        </Routes>
        <Routes>
        <Route path='/room/:id/:userId' element={<VidoeHome/>} />

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Repeat, Repeat1, Shuffle } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { getVideo } from "../reducer/VideoReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { getVideo, selectPlayList } from "../reducer/VideoReducer";
 import toast from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const {
 export const MusicContext = createContext();
 
 function MusicContextProvider({ children }) {
+  const list = useSelector(selectPlayList)
 const [Data, setData] = useState([])
 const audio = useRef();
   const [play, setplay] = useState(0);
@@ -27,7 +28,7 @@ const audio = useRef();
   const [volume, setvolume] = useState(0);
   const [inputVolume, setinputVolume] = useState(false);
   const [repeat, setrepeat] = useState('repeat')
-  const [list, setlist] = useState(false)
+  const [list1, setlist] = useState(false)
   const [messages, setMessages] = useState(false)
   const [header, setheader] = useState(false)
   const [search, setsearch] = useState(false)
@@ -108,7 +109,7 @@ const SearchShorts =()=>{
     setplay(()=>{
       let skip = play;
       skip++;
-      if (skip > Data.length - 1) {
+      if (skip > list?.post?.length - 1) {
         skip = 0;
       }
       return skip;
@@ -119,7 +120,7 @@ const SearchShorts =()=>{
       let skip = play;
       skip--;
       if (skip < 0) {
-        skip = Data.length - 1;
+        skip = list?.post?.length - 1;
       }
       return skip;
     });
@@ -130,7 +131,7 @@ const SearchShorts =()=>{
 
   useEffect(() => {
   setcontrols(()=>{
-    if (play +1 > Data.length-1) {
+    if (play +1 > list?.post?.length-1) {
       return 0;
     }else{
       return play+1;
@@ -274,7 +275,7 @@ const SearchShorts =()=>{
     setq,q,
     shorts,setShorts,
     videos,setVideos,
-    
+     list,
     SearchShorts,
     SearchBar,
     get,

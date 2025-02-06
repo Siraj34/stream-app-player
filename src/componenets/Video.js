@@ -339,7 +339,7 @@ function Video() {
     const chat = prompt("Please enter your name ...");
     if (chat) {
       try {
-        const {data} = await axios.post('http://localhost:4000/api/chats/post',
+        const {data} = await axios.post('https://stream-data-app.vercel.app/api/chats/post',
              {
          videoUrl: vdata.videoUrl,
          imageUrl: vdata.imageUrl,
@@ -350,6 +350,7 @@ function Video() {
         user: login?.email,
         image:login?.imageUrl,
         postBy:login?._id,
+        videoName:vdata?.image,
              })
       
 
@@ -369,7 +370,7 @@ function Video() {
     
    
       try {
-        const {data} = await axios.post('http://localhost:4000/api/chats/post',
+        const {data} = await axios.post('https://stream-data-app.vercel.app/api/chats/post',
              {
          videoUrl: vdata.videoUrl,
          imageUrl: vdata.imageUrl,
@@ -380,6 +381,7 @@ function Video() {
         user: login?.email,
         image:login?.imageUrl,
         postBy:login?._id,
+        videoName:vdata?.image,
              })
       
 
@@ -398,7 +400,7 @@ function Video() {
   useEffect(() => {
   async function get(params) {
     try {
-      const {data} = await axios.get(`http://localhost:4000/api/user/chat/${login?._id}`)
+      const {data} = await axios.get(`https://stream-data-app.vercel.app/api/user/chat/${login?._id}`)
     setChatName(data?.post);
     toast.success('SUCCESS NAME CREATE ...')
   }

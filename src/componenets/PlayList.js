@@ -20,7 +20,7 @@ export default function PlayList() {
 
   useEffect(() => {
     const submitbutton = () => {
-      fetch(`http://localhost:4000/api/chats/chat/${id}`, {
+      fetch(`https://stream-data-app.vercel.app/api/chats/chat/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function PlayList() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/playLists/post",
+        "https://stream-data-app.vercel.app/api/playLists/post",
         {
           chatId: play?._id,
           videoUrl: play.videoUrl,
@@ -72,7 +72,7 @@ export default function PlayList() {
     async function get() {
       try {
         const { data } = await axios.get(
-          `http://localhost:4000/api/playLists/play/${id}`
+          `https://stream-data-app.vercel.app/api/playLists/play/${id}`
         );
       
        
@@ -87,7 +87,7 @@ export default function PlayList() {
   useEffect(() => {
     async function get(params) {
       try {
-        const {data} = await axios.get(`http://localhost:4000/api/user/chat/${login?._id}`)
+        const {data} = await axios.get(`https://stream-data-app.vercel.app/api/user/chat/${login?._id}`)
          dispatch(getPlayVideo(data))
       setmessage(data?.post);
       toast.success('SUCCESS NAME CREATE ...')
@@ -157,7 +157,7 @@ export default function PlayList() {
                   <div className=" flex flex-col ">
                     <div className="flex ml-2">
                       <img
-                        src={item?.image}
+                        src={item?.videoName}
                         className="w-[40px] h-[40px] rounded-full m-2"
                       />
                       <span className="m-2">
